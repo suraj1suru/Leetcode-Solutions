@@ -15,7 +15,12 @@
  */
 class Solution {
     int preIdx;
+    HashMap<Integer, Integer> hm ;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+      hm  = new HashMap<>();
+        for(int i = 0; i<inorder.length; i++){
+         hm.put(inorder[i], i);
+        }
         preIdx = 0;
         return preOrderTraversal(preorder, inorder, 0, preorder.length - 1);
     }
@@ -27,16 +32,29 @@ class Solution {
         }
         return -1;
     }
-    public TreeNode preOrderTraversal(int[] preorder, int[] inorder, int left, int right){
+    
+      public TreeNode preOrderTraversal(int[] preorder, int[] inorder, int left, int right){
         if(left > right) return null;
         
         int rval = preorder[preIdx++];
         TreeNode root = new TreeNode(rval);
-        int idx = findOrderTraversal(inorder, left, right, rval);
+        int idx = hm.get(rval);
         
         root.left = preOrderTraversal(preorder, inorder, left, idx-1);
         root.right = preOrderTraversal(preorder, inorder, idx +1, right);
         
         return root;
     }
+//     public TreeNode preOrderTraversal(int[] preorder, int[] inorder, int left, int right){
+//         if(left > right) return null;
+        
+//         int rval = preorder[preIdx++];
+//         TreeNode root = new TreeNode(rval);
+//         int idx = findOrderTraversal(inorder, left, right, rval);
+        
+//         root.left = preOrderTraversal(preorder, inorder, left, idx-1);
+//         root.right = preOrderTraversal(preorder, inorder, idx +1, right);
+        
+//         return root;
+//     }
 }
