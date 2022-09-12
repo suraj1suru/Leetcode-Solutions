@@ -25,13 +25,13 @@ class Solution {
         return preOrderTraversal(preorder, inorder, 0, preorder.length - 1);
     }
     
-    public int findOrderTraversal(int[] inorder, int left, int right, int val){
-        while(left <= right){
-            if(inorder[left] == val) return left;
-            left++;
-        }
-        return -1;
-    }
+//     public int findOrderTraversal(int[] inorder, int left, int right, int val){
+//         while(left <= right){
+//             if(inorder[left] == val) return left;
+//             left++;
+//         }
+//         return -1;
+//     }
     
       public TreeNode preOrderTraversal(int[] preorder, int[] inorder, int left, int right){
         if(left > right) return null;
