@@ -1,5 +1,7 @@
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
+        
+        //that one is good
        int n = nums.length;
         int nge[] = new int[n];
         Stack < Integer > st = new Stack < > ();
