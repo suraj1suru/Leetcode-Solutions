@@ -1,19 +1,13 @@
 class Solution {
 
     public boolean checkIfPangram(String s) {
-        int i = 0;
-        int n = s.length();
-        if (n < 26) return false;
-        boolean[] mark = new boolean[26];
-        while (i != n) {
-            int index = s.charAt(i) - 'a';
-            mark[index] = true;
-            i++;
-        }
-        for (int j = 0; j < mark.length; j++) {
-            if (mark[j] == false) return false;
-        }
+        // Empty set 'seen'.
+        Set<Character> seen = new HashSet<>();
 
-        return true;
+        // Iterate over 'sentence' add every letter to 'seen'.
+        for (char currChar : s.toCharArray()) seen.add(currChar);
+
+        // If the size of 'seen' is 26, then 'sentence' is a pangram.
+        return seen.size() == 26;
     }
 }
