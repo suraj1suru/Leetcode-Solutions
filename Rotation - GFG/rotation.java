@@ -31,13 +31,24 @@ class GFG {
 
 class Solution {
     int findKRotation(int arr[], int n) {
-        for(int i =1; i<n; i++){
-            if(arr[i-1] > arr[i]){
-                return i;
-            }
-        }
-        
-        
-        return 0;
+      int lo = 0; 
+      int hi = n - 1;
+      
+      if( arr[lo] <= arr[hi]) return 0;
+      while(lo <= hi){
+          int mid = (lo + hi)/2;
+          
+          if(arr[mid] > arr[mid +1]){
+              return mid +  1;
+          }else if(arr[mid] < arr[mid - 1]){
+              return mid;
+          }else if(arr[lo] <= arr[mid]){
+              lo = mid +1;
+          }else if(arr[mid] <= arr[hi]){
+              hi = mid - 1;
+          }
+      }
+      
+      return 0;
     }
 }
